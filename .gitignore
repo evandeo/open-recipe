@@ -1,8 +1,7 @@
 # Directories
-data/
+src/__pycache__
 
 # Filetypes
-*.csv
-*.json
+*.pyc
 
 # Other
