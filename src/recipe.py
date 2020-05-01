@@ -25,9 +25,10 @@ class Nutrition:
 
 class Recipe:
 
-    def __init__(self, name, author, description, nutrition, ingredients, method, time, difficulty, servings, img_url):
+    def __init__(self, name, author, url, description, nutrition, ingredients, method, time, difficulty, servings, img_url):
         self.name = name
         self.author = author
+        self.url = url
         self.description = description
         self.nutrition = nutrition
         self.ingredients = ingredients
@@ -41,6 +42,7 @@ class Recipe:
         return {
             "name": self.name,
             "author": self.author,
+            "url": self.url,
             "description": self.description,
             "nutrition": self.nutrition.to_dict(),
             "ingredients": self.ingredients,

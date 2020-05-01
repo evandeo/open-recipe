@@ -38,6 +38,7 @@ class GoodFoodSpider(scrapy.Spider):
     def parse(self, response):
         # Information from header includes title, author, cook time, difficulty, servings
         # and nutritional information
+        url = response.url
         header = response.xpath('//div[contains(@class, "recipe-header")]')
         recipe_title = header.xpath('h1[contains(@class, "recipe-header__title")]/text()')
         attrib = header.xpath('//div[contains(@class, "recipe-header__chef")]/span/a/text()')
@@ -84,7 +85,7 @@ class GoodFoodSpider(scrapy.Spider):
         method = details.xpath('section[contains(@id, "recipe-method")]//'
                                'div[contains(@class, "method")]/ol/li/p/text()')
 
-        recipe_object = Recipe(recipe_title.get(), attrib.get(), description, nutrition_object, ingredients.getall(),
+        recipe_object = Recipe(recipe_title.get(), attrib.get(), url, description, nutrition_object, ingredients.getall(),
                                method.getall(), time, difficulty, servings, img.get())
 
         # self, name, author, nutrition, ingredients, method
